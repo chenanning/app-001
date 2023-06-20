@@ -1,0 +1,9 @@
+server:
+  port: 10010
+spring:
+  application:
+    name: app-001-gateway
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
