@@ -1,6 +1,6 @@
 package icu.huajuan.controller;
 
-import icu.huajuan.model.common.ResponseResult;
+import icu.huajuan.model.common.dto.ResponseResult;
 import icu.huajuan.model.files.dto.TaskInfoDTO;
 import icu.huajuan.model.files.entity.SysUploadTask;
 import icu.huajuan.model.files.param.InitTaskParam;

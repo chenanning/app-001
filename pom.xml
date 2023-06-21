@@ -32,7 +32,9 @@
         <minio.version>8.5.2</minio.version>
         <aws-java-sdk-s3.version>1.12.481</aws-java-sdk-s3.version>
         <hutool-all.version>5.8.19</hutool-all.version>
-        <jjtw.version>0.9.1</jjtw.version>
+        <java.jwt.version>4.4.0</java.jwt.version>
+        <lang3.version>3.12.0</lang3.version>
+        <jakarta.xml.bind-api.version>3.0.1</jakarta.xml.bind-api.version>
         <spring-cloud-alibaba.version>2022.0.0.0-RC2</spring-cloud-alibaba.version>
     </properties>
     <!-- 继承Spring boot工程 -->
@@ -59,6 +61,13 @@
             <version>${hutool-all.version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.auth0</groupId>
+            <artifactId>java-jwt</artifactId>
+            <version>4.4.0</version>
+        </dependency>
+
+
     </dependencies>
 
     <dependencyManagement>
@@ -71,6 +80,11 @@
             <dependency>
                 <groupId>icu.huajuan</groupId>
                 <artifactId>app-001-model</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>icu.huajuan</groupId>
+                <artifactId>app-001-utils</artifactId>
                 <version>${project.version}</version>
             </dependency>
 
@@ -155,11 +169,23 @@
                 <version>${aws-java-sdk-s3.version}</version>
             </dependency>
 
-            <!-- jjwt -->
+            <!-- jwt -->
             <dependency>
-                <groupId>io.jsonwebtoken</groupId>
-                <artifactId>jjwt</artifactId>
-                <version>${jjtw.version}</version>
+                <groupId>com.auth0</groupId>
+                <artifactId>java-jwt</artifactId>
+                <version>${java.jwt.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${lang3.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>jakarta.xml.bind</groupId>
+                <artifactId>jakarta.xml.bind-api</artifactId>
+                <version>${jakarta.xml.bind-api.version}</version>
             </dependency>
 
         </dependencies>

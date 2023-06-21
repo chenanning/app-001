@@ -1,6 +1,6 @@
 package icu.huajuan.exception;
 
-import icu.huajuan.model.common.ResponseResult;
+import icu.huajuan.model.common.dto.ResponseResult;
 import icu.huajuan.model.common.enums.AppHttpCodeEnum;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.ExceptionHandler;

@@ -14,6 +14,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>app-001-file</module>
+        <module>app-001-user</module>
     </modules>
 
     <properties>
@@ -26,8 +27,11 @@
         <dependency>
             <groupId>icu.huajuan</groupId>
             <artifactId>app-001-model</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-            <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>icu.huajuan</groupId>
+            <artifactId>app-001-common</artifactId>
         </dependency>
 
         <dependency>
@@ -42,8 +46,8 @@
         </dependency>
 
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-redis</artifactId>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
         </dependency>
     </dependencies>
 
