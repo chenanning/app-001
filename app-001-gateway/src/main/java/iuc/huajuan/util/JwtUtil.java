@@ -1,4 +1,4 @@
-package icu.huajuan.common;
+package iuc.huajuan.util;
 
 
 import com.auth0.jwt.JWT;

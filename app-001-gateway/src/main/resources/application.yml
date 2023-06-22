@@ -1,5 +1,5 @@
 server:
-  port: 10010
+  port: 50001
 spring:
   application:
     name: app-001-gateway
@@ -7,3 +7,25 @@ spring:
     nacos:
       discovery:
         server-addr: localhost:8848
+    gateway:
+      globalcors:
+        add-to-simple-url-handler-mapping: true
+        corsConfigurations:
+          '[/**]': # 匹配所有请求
+            allowedHeaders: "*" # 跨域处理 允许所有的域
+            allowedOrigins: "*" # 支持的方法
+            allowedMethods:
+              - GET
+              - POST
+              - DELETE
+              - PUT
+              - OPTION
+      routes:
+        # 平台管理
+        - id: user
+          uri: lb://app-001-user
+          predicates:
+            - Path=/user/**
+          filters:
+            - StripPrefix= 1
+

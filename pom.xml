@@ -33,6 +33,7 @@
         <aws-java-sdk-s3.version>1.12.481</aws-java-sdk-s3.version>
         <hutool-all.version>5.8.19</hutool-all.version>
         <java.jwt.version>4.4.0</java.jwt.version>
+        <commons.io.version>2.13.0</commons.io.version>
         <lang3.version>3.12.0</lang3.version>
         <jakarta.xml.bind-api.version>3.0.1</jakarta.xml.bind-api.version>
         <spring-cloud-alibaba.version>2022.0.0.0-RC2</spring-cloud-alibaba.version>
@@ -60,14 +61,6 @@
             <artifactId>hutool-all</artifactId>
             <version>${hutool-all.version}</version>
         </dependency>
-
-        <dependency>
-            <groupId>com.auth0</groupId>
-            <artifactId>java-jwt</artifactId>
-            <version>4.4.0</version>
-        </dependency>
-
-
     </dependencies>
 
     <dependencyManagement>
@@ -175,7 +168,12 @@
                 <artifactId>java-jwt</artifactId>
                 <version>${java.jwt.version}</version>
             </dependency>
-
+            <!--Apache 工具包包-->
+            <dependency>
+                <groupId>commons-io</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>${commons.io.version}</version>
+            </dependency>
             <dependency>
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-lang3</artifactId>

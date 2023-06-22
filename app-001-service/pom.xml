@@ -15,6 +15,7 @@
     <modules>
         <module>app-001-file</module>
         <module>app-001-user</module>
+        <module>app-001-note</module>
     </modules>
 
     <properties>
