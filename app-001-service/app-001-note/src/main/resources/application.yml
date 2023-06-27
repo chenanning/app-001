@@ -1,0 +1,19 @@
+server:
+  port: 51002
+spring:
+  application:
+    name: app-001-note
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/app-001-note?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+    username: root
+    password: root
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+# 设置Mapper接口所对应的XML文件位置，如果你在Mapper接口中有自定义方法，需要进行该配置
+mybatis-plus:
+  mapper-locations: classpath*:mapper/*.xml
+  # 设置别名包扫描路径，通过该属性可以给包中的类注册别名
+  type-aliases-package: icu.huajuan.model.note.entity

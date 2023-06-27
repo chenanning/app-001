@@ -28,4 +28,11 @@ spring:
             - Path=/user/**
           filters:
             - StripPrefix= 1
+        # 笔记微服务
+        - id: note
+          uri: lb://app-001-note
+          predicates:
+            - Path=/note/**
+          filters:
+            - StripPrefix= 1
 
