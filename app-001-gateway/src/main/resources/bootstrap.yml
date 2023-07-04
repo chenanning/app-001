@@ -1,0 +1,17 @@
+server:
+  port: 51000
+spring:
+  application:
+    name: app-001-gateway
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 152.136.176.118:8848
+        namespace: 3c45f634-bff8-4f92-8bef-d872bdd9e6d8
+      config:
+        namespace: 3c45f634-bff8-4f92-8bef-d872bdd9e6d8
+        group: DEFAULT_GROUP
+        file-extension: yml
+        server-addr: 152.136.176.118:8848
+
+

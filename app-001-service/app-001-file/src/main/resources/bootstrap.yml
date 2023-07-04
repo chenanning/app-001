@@ -1,5 +1,5 @@
 server:
-  port: 10240
+  port: 51003
 
 spring:
   application:
@@ -14,3 +14,16 @@ spring:
         group: DEFAULT_GROUP
         file-extension: yml
         server-addr: 152.136.176.118:8848
+
+# 七牛云配置------------------------------------
+qiniu:
+  accessKey: "5OLBaHyRVo1lZa82hVPir4E7E0om7UoJaAcakWs-"
+  secretKey: "zzJbnm0MvRA_EElJVo1k2OWz45pIojL6G6xSDWcZ"
+  # 七牛云空间名
+  bucket: "app-001-file"
+  # 外链访问路径
+  hosts: "http://files.huajuan.icu/"
+  priKey: ""
+  # 地域(华东 z0 华北 z1 华南 z2 北美 na0 东南亚 as0)
+  region: "z1"
+
