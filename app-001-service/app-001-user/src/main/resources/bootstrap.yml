@@ -13,3 +13,14 @@ spring:
         group: DEFAULT_GROUP
         file-extension: yml
         server-addr: 152.136.176.118:8848
+  data:
+    redis:
+      host: 127.0.0.1
+      port: 6379
+      database: 0
+      lettuce:
+        pool:
+          max-active: 8
+          max-idle: 8
+          min-idle: 0
+          max-wait: 10ms
