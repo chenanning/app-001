@@ -5,15 +5,11 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>icu.huajuan</groupId>
-        <artifactId>app-001</artifactId>
+        <artifactId>app-001-common</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>app-001-common</artifactId>
-    <packaging>pom</packaging>
-    <modules>
-        <module>app-001-redis</module>
-    </modules>
+    <artifactId>app-001-redis</artifactId>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
@@ -23,21 +19,8 @@
 
     <dependencies>
         <dependency>
-            <groupId>icu.huajuan</groupId>
-            <artifactId>app-001-utils</artifactId>
-        </dependency>
-        <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>icu.huajuan</groupId>
-            <artifactId>app-001-model</artifactId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
         </dependency>
     </dependencies>
 
