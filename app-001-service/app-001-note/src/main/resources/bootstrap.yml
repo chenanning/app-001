@@ -11,7 +11,13 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: localhost:8848
+        server-addr: 152.136.176.118:8848
+        namespace: 3c45f634-bff8-4f92-8bef-d872bdd9e6d8
+      config:
+        namespace: 3c45f634-bff8-4f92-8bef-d872bdd9e6d8
+        group: DEFAULT_GROUP
+        file-extension: yml
+        server-addr: 152.136.176.118:8848
 # 设置Mapper接口所对应的XML文件位置，如果你在Mapper接口中有自定义方法，需要进行该配置
 mybatis-plus:
   mapper-locations: classpath*:mapper/*.xml

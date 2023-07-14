@@ -3,6 +3,8 @@ package icu.huajuan.controller.v1;
 
 import icu.huajuan.model.common.dto.Result;
 import icu.huajuan.service.QiNiuService;
+import icu.huajuan.user.IUserClient;
+import jakarta.annotation.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
