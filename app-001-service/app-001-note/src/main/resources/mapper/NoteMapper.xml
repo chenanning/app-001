@@ -11,6 +11,9 @@
         <result column="desc" property="desc"/>
     </resultMap>
     <select id="load" resultMap="resultMap">
+
+
+
         SELECT * FROM note;
     </select>
 
