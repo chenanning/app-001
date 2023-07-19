@@ -1,7 +1,10 @@
 package icu.huajuan.service;
 
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.qiniu.common.QiniuException;
-import icu.huajuan.model.files.dto.TokenAndUrlDTO;
+import icu.huajuan.model.file.dto.ImageInfoDTO;
+import icu.huajuan.model.file.dto.TokenAndUrlDTO;
+import icu.huajuan.model.file.entity.ImageGallery;
 
 import java.io.File;
 import java.io.InputStream;
@@ -10,7 +13,7 @@ import java.io.InputStream;
  *
  * @author Chen Anning
  **/
-public interface QiNiuService {
+public interface QiNiuService extends IService<ImageGallery> {
 
     /**
      * 获取上传凭证
@@ -41,5 +44,5 @@ public interface QiNiuService {
     String delete(String key) throws QiniuException;
 
 
-
+    void saveImage(ImageInfoDTO imageInfoDTO);
 }

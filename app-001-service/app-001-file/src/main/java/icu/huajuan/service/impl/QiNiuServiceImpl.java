@@ -1,11 +1,16 @@
 package icu.huajuan.service.impl;
 
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.qiniu.common.QiniuException;
 import com.qiniu.http.Response;
 import com.qiniu.storage.BucketManager;
 import com.qiniu.storage.UploadManager;
 import com.qiniu.util.Auth;
 import com.qiniu.util.StringMap;
+import icu.huajuan.common.JwtUtil;
+import icu.huajuan.mapper.QiNiuMapper;
+import icu.huajuan.model.file.dto.ImageInfoDTO;
+import icu.huajuan.model.file.entity.ImageGallery;
 import icu.huajuan.service.QiNiuService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +26,7 @@ import java.io.InputStream;
  **/
 @Slf4j
 @Service
-public class QiNiuServiceImpl implements QiNiuService {
+public class QiNiuServiceImpl extends ServiceImpl<QiNiuMapper, ImageGallery> implements QiNiuService {
 
     @Autowired
     private UploadManager uploadManager;
@@ -113,6 +118,15 @@ public class QiNiuServiceImpl implements QiNiuService {
         return response.statusCode == 200 ? "删除成功!" : "删除失败!";
     }
 
+    @Override
+    public void saveImage(ImageInfoDTO imageInfoDTO) {
+        // 解析token
+        Long userId = JwtUtil.getIdFromToken(imageInfoDTO.getToken());
+        ImageGallery imageGallery = new ImageGallery();
+        imageGallery.setUserId(userId);
+        imageGallery.setImageUrl(imageInfoDTO.getImageUrl());
+        save(imageGallery);
+    }
 
 
     /**

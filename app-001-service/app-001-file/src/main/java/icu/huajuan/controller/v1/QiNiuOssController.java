@@ -2,12 +2,10 @@ package icu.huajuan.controller.v1;
 
 
 import icu.huajuan.model.common.dto.Result;
+import icu.huajuan.model.file.dto.ImageInfoDTO;
 import icu.huajuan.service.QiNiuService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /***
  *
@@ -30,6 +28,15 @@ public class QiNiuOssController {
         return Result.okResult(qiNiuService.getUploadToken());
     }
 
+    /**
+     * 保存前端传过来的图片地址和信息
+     * eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzeXN0ZW0iLCJpc3MiOiJhcHAtMDAxIiwiYXVkIjoiYXBwIiwiaWF0IjoxNjg5NTc2MjE2LCJleHAiOjE2ODk2NjI2MTYsImlkIjoxfQ.BocpXovzFksV6PBE4NsmfraZujvdK5GDnpYrELdpDfk
+     */
+    @PostMapping("/save")
+    public Result<String> saveImage(@RequestBody ImageInfoDTO imageInfoDTO) {
+        qiNiuService.saveImage(imageInfoDTO);
+        return Result.okResult("保存成功");
+    }
 
 
 }
