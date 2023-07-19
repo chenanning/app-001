@@ -1,4 +1,4 @@
-package icu.huajuan.controller.v1.v1;
+package icu.huajuan.controller.v1;
 
 import icu.huajuan.model.common.dto.ResponseResult;
 import icu.huajuan.model.user.dto.LoginDto;

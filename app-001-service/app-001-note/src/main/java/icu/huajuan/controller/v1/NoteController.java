@@ -1,4 +1,4 @@
-package icu.huajuan.controller.v1.v1;
+package icu.huajuan.controller.v1;
 
 import icu.huajuan.model.common.dto.ResponseResult;
 import icu.huajuan.model.note.entity.Note;
@@ -29,6 +29,9 @@ public class NoteController {
     public ResponseResult<List<Note>> feed() {
         return ResponseResult.okResult(noteService.load());
     }
+
+
+    ///  123    eesddwe    123+eesddwe
 
 
 }
