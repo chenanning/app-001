@@ -120,10 +120,9 @@ public class QiNiuServiceImpl extends ServiceImpl<QiNiuMapper, ImageGallery> imp
 
     @Override
     public void saveImage(ImageInfoDTO imageInfoDTO) {
-        // 解析token
-        Long userId = JwtUtil.getIdFromToken(imageInfoDTO.getToken());
         ImageGallery imageGallery = new ImageGallery();
-        imageGallery.setUserId(userId);
+        imageGallery.setUserId(imageInfoDTO.getUserId());
+        imageGallery.setNoteId(imageInfoDTO.getNoteId());
         imageGallery.setImageUrl(imageInfoDTO.getImageUrl());
         save(imageGallery);
     }

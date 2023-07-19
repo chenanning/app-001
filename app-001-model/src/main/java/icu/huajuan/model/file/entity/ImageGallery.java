@@ -18,6 +18,9 @@ public class ImageGallery {
     // 用户id
     private Long userId;
 
+    // 笔记id
+    private Long noteId;
+
     // 图片路径
     private String imageUrl;
 }

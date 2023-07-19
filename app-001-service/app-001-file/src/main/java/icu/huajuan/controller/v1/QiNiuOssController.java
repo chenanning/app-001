@@ -28,15 +28,4 @@ public class QiNiuOssController {
         return Result.okResult(qiNiuService.getUploadToken());
     }
 
-    /**
-     * 保存前端传过来的图片地址和信息
-     * eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzeXN0ZW0iLCJpc3MiOiJhcHAtMDAxIiwiYXVkIjoiYXBwIiwiaWF0IjoxNjg5NTc2MjE2LCJleHAiOjE2ODk2NjI2MTYsImlkIjoxfQ.BocpXovzFksV6PBE4NsmfraZujvdK5GDnpYrELdpDfk
-     */
-    @PostMapping("/save")
-    public Result<String> saveImage(@RequestBody ImageInfoDTO imageInfoDTO) {
-        qiNiuService.saveImage(imageInfoDTO);
-        return Result.okResult("保存成功");
-    }
-
-
 }

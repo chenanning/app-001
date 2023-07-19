@@ -17,7 +17,12 @@ public class ImageInfoDTO {
     /**
      * 用户token
      */
-    private String token;
+    private Long userId;
+
+    /**
+     * 笔记id
+     */
+    private Long noteId;
 
     /**
      * 图片地址
