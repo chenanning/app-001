@@ -1,9 +1,11 @@
 package icu.huajuan.user;
 
 import icu.huajuan.model.common.dto.ResponseResult;
+import icu.huajuan.model.common.dto.Result;
 import org.springframework.cloud.loadbalancer.annotation.LoadBalancerClient;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 /***
  *
@@ -13,6 +15,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 @LoadBalancerClient(value = "app-001-user")
 public interface IUserClient {
 
-    @GetMapping("/api/v1/user/select")
-    public ResponseResult selectUser();
+    @GetMapping("/api/v1/login/selectUserInfoById")
+    public Result selectUserInfoById(String id);
 }
