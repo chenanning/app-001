@@ -41,10 +41,10 @@ public class UserLoginController {
     }
 
     @GetMapping("/selectUserInfoById")
-    public Result selectUserInfoById (String id) {
+    public Result selectUserInfoById (@RequestParam String id) {
 //        redisTemplate.opsForValue().set("testKey","testValue");
-        return Result.okResult(userService.selectUserInfoById(id));
-//        return Result.okResult(iUserClient.selectUserInfoById("1"));
+//        return Result.okResult(userService.selectUserInfoById(id));
+        return Result.okResult(iUserClient.selectUserInfoById(id));
     }
 
 }
