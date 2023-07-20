@@ -1,6 +1,7 @@
 package icu.huajuan.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import icu.huajuan.file.FileClient;
 import icu.huajuan.mapper.NoteMapper;
 import icu.huajuan.model.note.entity.Note;
 import icu.huajuan.service.NoteService;
@@ -23,9 +24,13 @@ public class NoteSErviceImpl extends ServiceImpl<NoteMapper, Note> implements No
     @Resource
     private NoteMapper noteMapper;
 
+
+
     @Override
     public List<Note> load() {
         List<Note> load = noteMapper.load();
+        // 从文件服务获取图片信息
+        // 从用户服务获取用户信息
         System.out.println(load);
         return load;
     }

@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
+import lombok.experimental.Accessors;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -17,24 +18,25 @@ import java.util.Date;
  */
 
 @Data
+@Accessors(chain = true)
 @TableName("note")
 public class Note implements Serializable {
 
     @TableId(value = "id")
     private Long id;
 
+    // 用户id
     private String user_id;
 
-
+    // 笔记类型（note or video）
     private String model_type;
 
-    /**
-     * 标题
-     */
+    // 标题
     private String title;
 
+    //
     private String type;
-
+    // 内容
     private String desc;
 
 }
