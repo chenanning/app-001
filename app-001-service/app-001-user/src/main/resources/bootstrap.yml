@@ -13,6 +13,10 @@ spring:
         group: DEFAULT_GROUP
         file-extension: yml
         server-addr: 152.136.176.118:8848
+    loadbalancer:
+      cache:
+        enabled: true
+
   data:
     redis:
       host: 127.0.0.1

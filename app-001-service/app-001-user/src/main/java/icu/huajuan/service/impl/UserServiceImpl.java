@@ -5,12 +5,17 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import icu.huajuan.common.JwtUtil;
 import icu.huajuan.mapper.UserMapper;
 import icu.huajuan.model.common.dto.ResponseResult;
+import icu.huajuan.model.common.dto.Result;
 import icu.huajuan.model.common.enums.AppHttpCodeEnum;
 import icu.huajuan.model.user.dto.LoginDto;
 import icu.huajuan.model.user.entity.User;
 import icu.huajuan.service.UserService;
+import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.cache.CacheProperties;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.DigestUtils;
@@ -27,6 +32,11 @@ import java.util.Map;
 @Slf4j
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements UserService {
 
+    @Resource
+    RedisTemplate redisTemplate;
+
+    @Resource
+    UserMapper userMapper;
     /**
      * 登陆
      *
@@ -53,6 +63,8 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
 
             // 生成token
             String token = JwtUtil.generateToken(dbUser.getId().longValue());
+
+//            redisTemplate.opsForValue().set();
             Map<String, Object> map = new HashMap<>();
             map.put("token", token);
             dbUser.setSalt("");
@@ -66,5 +78,10 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
             map.put("token", JwtUtil.generateToken(0L));
             return ResponseResult.okResult(map);
         }
+    }
+
+    @Override
+    public User selectUserInfoById(String userId) {
+        return userMapper.selectById(userId);
     }
 }

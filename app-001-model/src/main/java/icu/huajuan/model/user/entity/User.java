@@ -66,7 +66,7 @@ public class User implements Serializable {
      * 2 未知
      */
     @TableField("sex")
-    private Boolean sex;
+    private Short sex;
 
     /**
      * 0 未
@@ -86,7 +86,7 @@ public class User implements Serializable {
      * 1锁定
      */
     @TableField("status")
-    private Boolean status;
+    private Short status;
 
     /**
      * 0 普通用户
