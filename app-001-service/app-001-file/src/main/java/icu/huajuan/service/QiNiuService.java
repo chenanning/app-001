@@ -4,9 +4,11 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.qiniu.common.QiniuException;
 import icu.huajuan.model.file.dto.ImageInfoDTO;
 import icu.huajuan.model.file.entity.ImageGallery;
+import icu.huajuan.model.file.vo.ImageVo;
 
 import java.io.File;
 import java.io.InputStream;
+import java.util.List;
 
 /***
  *
@@ -49,4 +51,6 @@ public interface QiNiuService extends IService<ImageGallery> {
 
 
     void saveImage(ImageInfoDTO imageInfoDTO);
+
+    List<ImageVo> getImage(Long noteId);
 }

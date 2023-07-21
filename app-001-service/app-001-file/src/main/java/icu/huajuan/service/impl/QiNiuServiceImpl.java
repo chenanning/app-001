@@ -11,7 +11,9 @@ import icu.huajuan.common.JwtUtil;
 import icu.huajuan.mapper.QiNiuMapper;
 import icu.huajuan.model.file.dto.ImageInfoDTO;
 import icu.huajuan.model.file.entity.ImageGallery;
+import icu.huajuan.model.file.vo.ImageVo;
 import icu.huajuan.service.QiNiuService;
+import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -19,6 +21,7 @@ import org.springframework.stereotype.Service;
 
 import java.io.File;
 import java.io.InputStream;
+import java.util.List;
 
 /***
  *
@@ -42,6 +45,9 @@ public class QiNiuServiceImpl extends ServiceImpl<QiNiuMapper, ImageGallery> imp
 
     @Value("${qiniu.hosts}")
     public String hosts;
+
+    @Resource
+    private QiNiuMapper qiNiuMapper;
 
     /**
      * 定义七牛云上传的相关策略
@@ -125,6 +131,12 @@ public class QiNiuServiceImpl extends ServiceImpl<QiNiuMapper, ImageGallery> imp
         imageGallery.setNoteId(imageInfoDTO.getNoteId());
         imageGallery.setImageUrl(imageInfoDTO.getImageUrl());
         save(imageGallery);
+    }
+
+    @Override
+    public List<ImageVo> getImage(Long noteId) {
+        List<ImageVo> imageVoList = qiNiuMapper.getImage(noteId);
+        return imageVoList;
     }
 
 
