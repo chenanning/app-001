@@ -7,22 +7,29 @@ import java.util.Date;
 @Data
 public class NoteDto {
 
-    private String category;
+    private Long id;
 
-    private String cursor_score;
+    // 用户id
+    private Long userId;
 
-    private Integer note_index;
+    // 笔记类型（note or video）
+    private String modelType;
 
-    private Integer num;
-    // 刷新类型
-    private Integer refresh_type;
+    // 标题
+    private String title;
 
-    private String search_key;
+    //
+    private String type;
+    // 内容
+    private String desc;
 
-    private String unread_begin_note_id;
+    // 图片地址
+    private String imageUrl;
 
-    private String unread_end_note_id;
+    // 创建时间
+    private Date createTime;
 
-    private Integer unread_note_count;
+    // 更新时间
+    private Date updateTime;
 
 }

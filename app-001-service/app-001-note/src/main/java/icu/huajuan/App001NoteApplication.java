@@ -11,7 +11,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
  **/
 @SpringBootApplication
 @EnableDiscoveryClient
-@EnableFeignClients(basePackages = "icu.huajuan.user")
+@EnableFeignClients
 public class App001NoteApplication {
     public static void main(String[] args) {
         SpringApplication.run(App001NoteApplication.class, args);

@@ -77,4 +77,13 @@ public class JwtUtil {
         }
     }
 
+    public static void main(String[] args) {
+        String token = generateToken(1L);
+        System.out.println(token);
+        Long id = verifyToken(token);
+        System.out.println(id);
+        id = getIdFromToken(token);
+        System.out.println(id);
+    }
+
 }
