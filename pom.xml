@@ -211,6 +211,14 @@
                 <version>${jakarta.xml.bind-api.version}</version>
             </dependency>
 
+
+
+            <!-- common-redis -->
+            <dependency>
+                <groupId>icu.huajuan</groupId>
+                <artifactId>app-001-redis</artifactId>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 
