@@ -14,4 +14,11 @@ import java.util.List;
 public interface NoteService extends IService<Note> {
 
     List<Note> load();
+
+    /**
+     * 保存笔记信息（包括图片信息）
+     * @param noteDto 笔记信息
+     * @return 执行结果
+     */
+    String saveNote(NoteDto noteDto);
 }
