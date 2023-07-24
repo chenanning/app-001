@@ -2,14 +2,12 @@ package icu.huajuan.controller.v1;
 
 
 import icu.huajuan.model.common.dto.Result;
+import icu.huajuan.model.file.dto.ImageInfoDTO;
 import icu.huajuan.service.QiNiuService;
 import icu.huajuan.user.IUserClient;
 import jakarta.annotation.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /***
  *
@@ -31,7 +29,5 @@ public class QiNiuOssController {
     public Result<String> getUploadToken() {
         return Result.okResult(qiNiuService.getUploadToken());
     }
-
-
 
 }
