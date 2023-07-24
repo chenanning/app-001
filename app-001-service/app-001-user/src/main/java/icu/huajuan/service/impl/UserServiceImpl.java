@@ -1,8 +1,10 @@
 package icu.huajuan.service.impl;
 
+import cn.hutool.crypto.SecureUtil;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import icu.huajuan.common.JwtUtil;
+import icu.huajuan.constant.UserConstant;
 import icu.huajuan.mapper.UserMapper;
 import icu.huajuan.model.common.dto.ResponseResult;
 import icu.huajuan.model.common.dto.Result;
@@ -64,7 +66,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
             // 生成token
             String token = JwtUtil.generateToken(dbUser.getId().longValue());
 
-//            redisTemplate.opsForValue().set();
+            redisTemplate.opsForValue().set(UserConstant.userTokenPrefix+dbUser.getId(),token);
             Map<String, Object> map = new HashMap<>();
             map.put("token", token);
             dbUser.setSalt("");

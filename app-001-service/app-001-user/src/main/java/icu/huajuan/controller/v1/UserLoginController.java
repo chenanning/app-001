@@ -1,5 +1,6 @@
 package icu.huajuan.controller.v1;
 
+import icu.huajuan.constant.UserConstant;
 import icu.huajuan.model.common.dto.ResponseResult;
 import icu.huajuan.model.common.dto.Result;
 import icu.huajuan.model.user.dto.LoginDto;
@@ -7,6 +8,7 @@ import icu.huajuan.service.UserService;
 import icu.huajuan.user.IUserClient;
 import jakarta.annotation.Resource;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.serializer.StringRedisSerializer;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
@@ -26,7 +28,7 @@ public class UserLoginController {
     IUserClient iUserClient;
 
     @Resource
-    RedisTemplate redisTemplate;
+    RedisTemplate<Object,Object> redisTemplate;
 
     @PostMapping("/login_auth")
     public ResponseResult<Map<String, Object>> login (@RequestBody LoginDto dto) {
@@ -36,8 +38,13 @@ public class UserLoginController {
 
     @GetMapping("/testRedis")
     public Result testRedis () {
+
+//        redisTemplate.setValueSerializer(new StringRedisSerializer());
+//        redisTemplate.setKeySerializer(new StringRedisSerializer());
+
         redisTemplate.opsForValue().set("testKey","testValue");
-         return Result.okResult(redisTemplate.opsForValue().get("testKey"));
+        redisTemplate.opsForValue().set(UserConstant.userTokenPrefix+"id","token");
+        return Result.okResult(redisTemplate.opsForValue().get("testKey"));
     }
 
     @GetMapping("/selectUserInfoById")
