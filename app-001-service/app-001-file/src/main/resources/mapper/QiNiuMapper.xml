@@ -5,6 +5,9 @@
     <select id="getImage" resultType="icu.huajuan.model.file.vo.ImageVo">
         select id, image_url
         from image_gallery
-        where note_id = #{noteId}
+        where note_id in
+        <foreach collection="noteIds" item="noteId" open="(" separator="," close=")">
+            #{noteId}
+        </foreach>
     </select>
 </mapper>

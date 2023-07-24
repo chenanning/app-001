@@ -15,5 +15,5 @@ import java.util.List;
 @Mapper
 public interface QiNiuMapper extends BaseMapper<ImageGallery> {
 
-    List<ImageVo> getImage(@Param("noteId") Long noteId);
+    List<ImageVo> getImage(@Param("noteIds") List<Integer> noteIds);
 }

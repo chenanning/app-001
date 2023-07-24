@@ -133,9 +133,8 @@ public class QiNiuServiceImpl extends ServiceImpl<QiNiuMapper, ImageGallery> imp
     }
 
     @Override
-    public List<ImageVo> getImage(Long noteId) {
-        List<ImageVo> imageVoList = qiNiuMapper.getImage(noteId);
-        return imageVoList;
+    public List<ImageVo> getImage(List<Integer> noteIds) {
+        return qiNiuMapper.getImage(noteIds);
     }
 
 
