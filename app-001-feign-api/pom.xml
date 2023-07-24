@@ -18,10 +18,10 @@
     </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>icu.huajuan</groupId>
-            <artifactId>app-001-common</artifactId>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>icu.huajuan</groupId>-->
+<!--            <artifactId>app-001-common</artifactId>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>icu.huajuan</groupId>
             <artifactId>app-001-model</artifactId>

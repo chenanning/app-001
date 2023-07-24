@@ -29,6 +29,10 @@
             <groupId>icu.huajuan</groupId>
             <artifactId>app-001-model</artifactId>
         </dependency>
+        <dependency>
+            <groupId>icu.huajuan</groupId>
+            <artifactId>app-001-utils</artifactId>
+        </dependency>
 
 
         <dependency>
@@ -64,17 +68,17 @@
             <artifactId>gson</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>icu.huajuan</groupId>
-            <artifactId>app-001-common</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.springframework.cloud</groupId>
-                    <artifactId>spring-cloud-starter-netflix-ribbon</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>icu.huajuan</groupId>-->
+<!--            <artifactId>app-001-common</artifactId>-->
+<!--            <version>0.0.1-SNAPSHOT</version>-->
+<!--            <exclusions>-->
+<!--                <exclusion>-->
+<!--                    <groupId>org.springframework.cloud</groupId>-->
+<!--                    <artifactId>spring-cloud-starter-netflix-ribbon</artifactId>-->
+<!--                </exclusion>-->
+<!--            </exclusions>-->
+<!--        </dependency>-->
 
 
         <dependency>
