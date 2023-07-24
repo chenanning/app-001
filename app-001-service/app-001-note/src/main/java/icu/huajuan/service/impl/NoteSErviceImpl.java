@@ -25,11 +25,17 @@ public class NoteSErviceImpl extends ServiceImpl<NoteMapper, Note> implements No
     private NoteMapper noteMapper;
 
 
-
     @Override
     public List<Note> load() {
+        // vo
+
+
         List<Note> load = noteMapper.load();
         // 从文件服务获取图片信息
+        for (Note note : load) {
+
+
+        }
         // 从用户服务获取用户信息
         System.out.println(load);
         return load;
