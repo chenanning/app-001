@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  icu.huajuan.config.RedisConfig,\
+  icu.huajuan.config.FastJson2JsonRedisSerializer
