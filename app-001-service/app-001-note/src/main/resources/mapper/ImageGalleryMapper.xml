@@ -3,5 +3,9 @@
 <mapper namespace="icu.huajuan.mapper.ImageGalleryMapper">
 
 
-
+    <select id="selectOneImageUrlByNoteId" resultType="icu.huajuan.model.note.vo.Cover">
+        select id, image_url
+        from image_gallery
+        where note_id = #{id} limit 1
+    </select>
 </mapper>

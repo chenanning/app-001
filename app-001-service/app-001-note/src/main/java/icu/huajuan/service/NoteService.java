@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import icu.huajuan.model.common.dto.ResponseResult;
 import icu.huajuan.model.note.dto.NoteDto;
 import icu.huajuan.model.note.entity.Note;
+import icu.huajuan.model.note.vo.NoteCartVo;
 
 import java.util.List;
 
@@ -13,7 +14,7 @@ import java.util.List;
  **/
 public interface NoteService extends IService<Note> {
 
-    List<Note> load();
+    List<NoteCartVo> load();
 
     /**
      * 保存笔记信息（包括图片信息）

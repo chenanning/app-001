@@ -7,6 +7,8 @@ import icu.huajuan.mapper.NoteMapper;
 import icu.huajuan.model.note.dto.NoteDto;
 import icu.huajuan.model.note.entity.ImageGallery;
 import icu.huajuan.model.note.entity.Note;
+import icu.huajuan.model.note.vo.Cover;
+import icu.huajuan.model.note.vo.NoteCartVo;
 import icu.huajuan.service.NoteService;
 
 import jakarta.annotation.Resource;
@@ -33,10 +35,14 @@ public class NoteSErviceImpl extends ServiceImpl<NoteMapper, Note> implements No
 
 
     @Override
-    public List<Note> load() {
+    public List<NoteCartVo> load() {
         // vo
-        List<Note> load = noteMapper.load();
-
+        List<NoteCartVo> load = noteMapper.load();
+        load.forEach(noteCartVo -> {
+            // 图片
+            Cover images = imageGalleryMapper.selectOneImageUrlByNoteId(noteCartVo.getId());
+            noteCartVo.setCover(images);
+        });
         return load;
     }
 

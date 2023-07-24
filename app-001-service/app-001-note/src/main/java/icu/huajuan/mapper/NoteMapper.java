@@ -2,6 +2,7 @@ package icu.huajuan.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import icu.huajuan.model.note.entity.Note;
+import icu.huajuan.model.note.vo.NoteCartVo;
 import org.apache.ibatis.annotations.Mapper;
 import java.util.List;
 
@@ -12,5 +13,5 @@ import java.util.List;
 @Mapper
 public interface NoteMapper extends BaseMapper<Note> {
 
-    List<Note> load();
+    List<NoteCartVo> load();
 }
