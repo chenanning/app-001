@@ -7,7 +7,6 @@ import com.qiniu.storage.BucketManager;
 import com.qiniu.storage.UploadManager;
 import com.qiniu.util.Auth;
 import com.qiniu.util.StringMap;
-import icu.huajuan.common.JwtUtil;
 import icu.huajuan.mapper.QiNiuMapper;
 import icu.huajuan.model.file.dto.ImageInfoDTO;
 import icu.huajuan.model.file.entity.ImageGallery;
