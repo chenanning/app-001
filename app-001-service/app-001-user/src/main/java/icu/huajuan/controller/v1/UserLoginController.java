@@ -1,14 +1,16 @@
 package icu.huajuan.controller.v1;
 
 import icu.huajuan.constant.UserConstant;
-import icu.huajuan.model.common.dto.ResponseResult;
 import icu.huajuan.model.common.dto.Result;
 import icu.huajuan.model.user.dto.LoginDto;
+import icu.huajuan.model.user.dto.RegisterDTO;
+import icu.huajuan.model.user.dto.SelectUserIdsDTO;
+import icu.huajuan.model.user.entity.User;
 import icu.huajuan.service.UserService;
 import icu.huajuan.user.IUserClient;
 import jakarta.annotation.Resource;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.serializer.StringRedisSerializer;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
@@ -25,33 +27,44 @@ public class UserLoginController {
     private UserService userService;
 
     @Resource
-    IUserClient iUserClient;
-
-    @Resource
     RedisTemplate<Object,Object> redisTemplate;
 
+    /**
+     * 登录
+     * @param dto
+     * @return
+     */
     @PostMapping("/login_auth")
-    public ResponseResult<Map<String, Object>> login (@RequestBody LoginDto dto) {
+    public Result<Map<String, Object>> login (@RequestBody LoginDto dto) {
         return userService.login(dto);
+    }
+
+    /**
+     * 注册
+     * @param dto
+     * @return
+     */
+    @PostMapping("/register")
+    public Result<User> register (@RequestBody @Validated RegisterDTO dto) {
+        return userService.register(dto);
     }
 
 
     @GetMapping("/testRedis")
     public Result testRedis () {
-
-//        redisTemplate.setValueSerializer(new StringRedisSerializer());
-//        redisTemplate.setKeySerializer(new StringRedisSerializer());
-
         redisTemplate.opsForValue().set("testKey","testValue");
         redisTemplate.opsForValue().set(UserConstant.userTokenPrefix+"id","token");
         return Result.okResult(redisTemplate.opsForValue().get("testKey"));
     }
 
-    @GetMapping("/selectUserInfoById")
-    public Result selectUserInfoById (@RequestParam String id) {
-//        redisTemplate.opsForValue().set("testKey","testValue");
-//        return Result.okResult(userService.selectUserInfoById(id));
-        return Result.okResult(iUserClient.selectUserInfoById(id));
+    /**
+     * 根据id批量查找用户信息
+     * @param dto
+     * @return
+     */
+    @PostMapping("/selectUserInfoByIds")
+    public Result selectUserInfoById (@RequestBody SelectUserIdsDTO dto) {
+        return Result.okResult(userService.selectUserInfoByIds(dto));
     }
 
 }
