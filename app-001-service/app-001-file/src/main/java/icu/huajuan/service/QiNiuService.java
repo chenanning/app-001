@@ -52,5 +52,5 @@ public interface QiNiuService extends IService<ImageGallery> {
 
     void saveImage(ImageInfoDTO imageInfoDTO);
 
-    List<ImageVo> getImage(Long noteId);
+    List<ImageVo> getImage(List<Integer> noteIds);
 }

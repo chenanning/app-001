@@ -31,9 +31,9 @@ public class FileClientController implements FileClient {
         qiNiuService.saveImage(imageInfoDTO);
     }
 
-    @GetMapping("/get")
+    @PostMapping("/get")
     @Override
-    public List<ImageVo> getImage(@RequestParam Long noteId) {
-        return qiNiuService.getImage(noteId);
+    public List<ImageVo> getImage(@RequestParam("noteIds") List<Integer> noteIds) {
+        return qiNiuService.getImage(noteIds);
     }
 }
