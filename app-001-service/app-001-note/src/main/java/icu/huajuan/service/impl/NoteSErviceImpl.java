@@ -11,6 +11,7 @@ import icu.huajuan.model.note.vo.Cover;
 import icu.huajuan.model.note.vo.NoteCartVo;
 import icu.huajuan.service.NoteService;
 
+import icu.huajuan.user.IUserClient;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -33,16 +34,19 @@ public class NoteSErviceImpl extends ServiceImpl<NoteMapper, Note> implements No
     @Resource
     private ImageGalleryMapper imageGalleryMapper;
 
+    @Resource
+    private IUserClient userClient;
+
 
     @Override
     public List<NoteCartVo> load() {
         // vo
         List<NoteCartVo> load = noteMapper.load();
-        load.forEach(noteCartVo -> {
-            // 图片
-            Cover images = imageGalleryMapper.selectOneImageUrlByNoteId(noteCartVo.getId());
-            noteCartVo.setCover(images);
-        });
+//        load.forEach(noteCartVo -> {
+//            // 图片
+//            Cover images = imageGalleryMapper.selectOneImageUrlByNoteId(noteCartVo.getId());
+//            noteCartVo.setCover(images);
+//        });
         return load;
     }
 

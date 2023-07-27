@@ -15,8 +15,6 @@ import java.util.List;
 public class NoteCartVo {
     // 笔记id
     private Long id;
-    // 图片信息
-    private Cover cover;
     // 标题
     private String title;
     // 互动信息(点赞数等) 应该是一个对象
@@ -25,7 +23,10 @@ public class NoteCartVo {
     private String modelType;
     // 描述
     private String desc;
-
+    // 图片信息
+    private String imageId;
+    // 图片url
+    private String imageUrl;
     // 用户信息 现在是entity 应该是一个vo
     private User user;
 }
