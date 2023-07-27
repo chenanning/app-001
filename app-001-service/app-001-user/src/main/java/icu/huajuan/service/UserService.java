@@ -6,6 +6,7 @@ import icu.huajuan.model.user.dto.LoginDto;
 import icu.huajuan.model.user.dto.RegisterDTO;
 import icu.huajuan.model.user.dto.SelectUserIdsDTO;
 import icu.huajuan.model.user.entity.User;
+import icu.huajuan.model.user.vo.UserInfoVO;
 
 import java.util.List;
 import java.util.Map;
@@ -27,7 +28,7 @@ public interface UserService extends IService<User> {
      Result register(RegisterDTO dto);
 
 
-     List<User> selectUserInfoByIds(SelectUserIdsDTO dto);
+     List<UserInfoVO> selectUserInfoByIds(SelectUserIdsDTO dto);
 
-     List<User> selectUserInfoByIds(List<Integer> ids);
+     List<UserInfoVO> selectUserInfoByIds(List<Integer> ids);
 }
