@@ -139,8 +139,10 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         return userMapper.selectBatchIds(dto.getIds());
     }
 
-
-
+    @Override
+    public List<User> selectUserInfoByIds(List<Integer> ids) {
+        return userMapper.selectBatchIds(ids);
+    }
 
 
     //生成普通的MD5码

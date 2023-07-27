@@ -17,5 +17,5 @@ import java.util.List;
 public interface IUserClient {
 
     @PostMapping("/userFeign/selectUserInfoByIds")
-    Result selectUserInfoByIds(@RequestBody SelectUserIdsDTO dto);
+    Result selectUserInfoByIds(@RequestBody List<Integer> ids);
 }
