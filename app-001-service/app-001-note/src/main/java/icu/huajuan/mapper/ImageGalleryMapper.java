@@ -1,8 +1,8 @@
 package icu.huajuan.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import icu.huajuan.model.file.entity.ImageGallery;
-import icu.huajuan.model.file.vo.ImageVo;
+import icu.huajuan.model.note.entity.ImageGallery;
+import icu.huajuan.model.note.vo.Cover;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -13,7 +13,7 @@ import java.util.List;
  * @author Chen Anning
  **/
 @Mapper
-public interface QiNiuMapper extends BaseMapper<ImageGallery> {
+public interface ImageGalleryMapper extends BaseMapper<ImageGallery> {
 
-    List<ImageVo> getImage(@Param("noteIds") List<Integer> noteIds);
+    Cover selectOneImageUrlByNoteId(@Param("id") Long id);
 }

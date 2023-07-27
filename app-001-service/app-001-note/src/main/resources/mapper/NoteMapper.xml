@@ -2,20 +2,11 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="icu.huajuan.mapper.NoteMapper">
 
-    <resultMap id="resultMap" type="icu.huajuan.model.note.entity.Note">
-        <id column="id" property="id"/>
-        <result column="title" property="title"/>
-        <result column="user_id" property="user_id"/>
-        <result column="model_type" property="model_type"/>
-        <result column="type" property="type"/>
-        <result column="desc" property="desc"/>
-    </resultMap>
-    <select id="load" resultMap="resultMap">
 
-
-
-        SELECT * FROM note;
+    <select id="load" resultType="icu.huajuan.model.note.vo.NoteCartVo">
+        select t1.id, t1.model_type, t1.title, t1.`desc`, t2.imageId, t2.image_url
+        from note t1
+                 left join (select min(id) as imageId, note_Id, image_url from image_gallery group by note_Id, image_url) t2
+                           on t1.id = t2.note_id
     </select>
-
-
 </mapper>

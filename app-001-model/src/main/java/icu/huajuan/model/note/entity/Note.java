@@ -26,10 +26,10 @@ public class Note implements Serializable {
     private Long id;
 
     // 用户id
-    private String user_id;
+    private Long userId;
 
     // 笔记类型（note or video）
-    private String model_type;
+    private String modelType;
 
     // 标题
     private String title;
@@ -37,6 +37,7 @@ public class Note implements Serializable {
     //
     private String type;
     // 内容
+    @TableField("`desc`")
     private String desc;
 
 }

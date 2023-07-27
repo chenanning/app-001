@@ -6,6 +6,7 @@ import org.springframework.cloud.loadbalancer.annotation.LoadBalancerClient;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -22,6 +23,6 @@ public interface FileClient {
     void saveImage(ImageInfoDTO imageInfoDTO);
 
     // 根据笔记id获取图片信息
-    @GetMapping("/file/get")
-    List<ImageVo> getImage(Long noteId);
+    @PostMapping("/file/get")
+    List<ImageVo> getImage(List<Integer> noteIds);
 }
