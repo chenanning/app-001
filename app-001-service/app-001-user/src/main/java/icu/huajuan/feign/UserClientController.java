@@ -7,6 +7,8 @@ import icu.huajuan.user.IUserClient;
 import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 
 /***
  *
@@ -21,7 +23,7 @@ public class UserClientController implements IUserClient {
 
     @PostMapping("/selectUserInfoByIds")
     @Override
-    public Result selectUserInfoByIds(@RequestBody SelectUserIdsDTO dto) {
-        return Result.okResult(userService.selectUserInfoByIds(dto));
+    public Result selectUserInfoByIds(@RequestBody List<Integer> ids) {
+        return Result.okResult(userService.selectUserInfoByIds(ids));
     }
 }

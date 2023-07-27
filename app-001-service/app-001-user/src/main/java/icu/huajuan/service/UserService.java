@@ -28,4 +28,6 @@ public interface UserService extends IService<User> {
 
 
      List<User> selectUserInfoByIds(SelectUserIdsDTO dto);
+
+     List<User> selectUserInfoByIds(List<Integer> ids);
 }
