@@ -17,11 +17,13 @@ import icu.huajuan.model.user.dto.LoginDto;
 import icu.huajuan.model.user.dto.RegisterDTO;
 import icu.huajuan.model.user.dto.SelectUserIdsDTO;
 import icu.huajuan.model.user.entity.User;
+import icu.huajuan.model.user.vo.UserInfoVO;
 import icu.huajuan.service.UserService;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.codec.binary.Hex;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.cache.CacheProperties;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -31,10 +33,7 @@ import org.springframework.util.DigestUtils;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
+import java.util.*;
 
 /***
  *
@@ -50,6 +49,9 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
 
     @Resource
     UserMapper userMapper;
+
+    static String defaultImage = "http://files.huajuan.icu/2.jpg";
+
     /**
      * 登陆
      *
@@ -101,13 +103,18 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         String phone = dto.getPhone();
         String username = dto.getUserName();
         String password = dto.getPassword();
+        String image = dto.getImage();
+        String email = dto.getEmail();
         Short sex = dto.getSex();
         //未设置用户名则用手机号填补
         if (StringUtils.isBlank(username)){
-            dto.setUserName(phone);
+            username = phone;
         }
         if (null == sex){
-            dto.setSex(Short.valueOf("2"));
+            dto.setSex(Short.valueOf("0"));
+        }
+        if (StringUtils.isBlank(dto.getImage())){
+            image = defaultImage;
         }
 
         Long phoneCount = userMapper.selectCount(new QueryWrapper<User>().eq("phone",phone));
@@ -119,6 +126,8 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
             User user = new User();
             user.setName(username);
             user.setPhone(phone);
+            user.setImage(image);
+            user.setSex(sex);
             user.setCreatedTime(DateTime.now());
 
             Map<String,String> saltMap = generate(password);
@@ -135,13 +144,29 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     }
 
     @Override
-    public List<User> selectUserInfoByIds(SelectUserIdsDTO dto) {
-        return userMapper.selectBatchIds(dto.getIds());
+    public List<UserInfoVO> selectUserInfoByIds(SelectUserIdsDTO dto) {
+        List<User> userByIds = userMapper.selectBatchIds(dto.getIds());
+        List<UserInfoVO> uersVOList = new ArrayList();
+
+        for (User u:userByIds) {
+            UserInfoVO vo =  new UserInfoVO();
+            BeanUtils.copyProperties(u,vo);
+            uersVOList.add(vo);
+        }
+        return uersVOList;
     }
 
     @Override
-    public List<User> selectUserInfoByIds(List<Integer> ids) {
-        return userMapper.selectBatchIds(ids);
+    public List<UserInfoVO> selectUserInfoByIds(List<Integer> ids) {
+        List<User> userByIds = userMapper.selectBatchIds(ids);
+        List<UserInfoVO> uersVOList = new ArrayList();
+
+        for (User u:userByIds) {
+            UserInfoVO vo =  new UserInfoVO();
+            BeanUtils.copyProperties(u,vo);
+            uersVOList.add(vo);
+        }
+        return uersVOList;
     }
 
 
