@@ -7,9 +7,6 @@ import java.util.List;
 @Data
 public class NoteDto {
 
-    // 用户id
-    private String token;
-
     // 笔记类型（note or video）
     private String modelType;
 
