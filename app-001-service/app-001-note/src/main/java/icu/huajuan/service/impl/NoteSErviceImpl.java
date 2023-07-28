@@ -1,5 +1,6 @@
 package icu.huajuan.service.impl;
 
+import cn.hutool.http.server.HttpServerRequest;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import icu.huajuan.common.JwtUtil;
 import icu.huajuan.mapper.ImageGalleryMapper;
@@ -52,13 +53,14 @@ public class NoteSErviceImpl extends ServiceImpl<NoteMapper, Note> implements No
 
     /**
      * 保存笔记信息（包括图片信息）
+     *
      * @param noteDto 笔记信息
      * @return 执行结果
      */
     @Transactional
     @Override
-    public String saveNote(NoteDto noteDto) {
-        Long userId = JwtUtil.getIdFromToken(noteDto.getToken());
+    public String saveNote(NoteDto noteDto, String accessToken) {
+        Long userId = JwtUtil.getIdFromToken(accessToken);
         // 保存笔记信息
         Note note = new Note();
         note.setUserId(userId);
